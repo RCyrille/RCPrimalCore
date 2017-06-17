@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  web-api:
+    image: openjdk:8-alpine
+    command: ./gradlew bootrun
+    working_dir: /rcpc_app
+    volumes:
+      - .:/rcpc_app
+    ports:
+      - 8080:8080
