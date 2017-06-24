@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: db.changelog-201706262045-messages.yaml
+      relativeToChangelogFile: true
+
+  - changeSet:
+      id: tagDatabase-1.0.0
+      author: RCyrille
+      changes:
+        - tagDatabase:
+            tag: version_1.0.0

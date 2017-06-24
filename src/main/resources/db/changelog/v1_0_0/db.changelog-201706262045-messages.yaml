@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: ADD_MESSAGES_TABLE
+      author: RCyrille
+      comment: Add table in order to manage messages
+      changes:
+        - createTable:
+            tableName: message
+            remarks: Table which contains application's messages
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_message
+                    nullable: false
+              - column:
+                  name: message
+                  type: TEXT
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+          tableName: messages

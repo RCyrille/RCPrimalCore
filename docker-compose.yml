@@ -2,6 +2,8 @@ version: "2"
 
 services:
   web-api:
+    depends_on:
+      - database
     image: openjdk:8-alpine
     command: ./gradlew bootrun
     working_dir: /rcpc_app
@@ -9,3 +11,12 @@ services:
       - .:/rcpc_app
     ports:
       - 8080:8080
+
+  database:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=rcpc_user
+      - POSTGRES_PASSWORD=rcpc_pwd
+      - POSTGRES_DB=rcpc_database

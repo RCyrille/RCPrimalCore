@@ -1,0 +1,20 @@
+#######################################################
+############## RC PRIMAL CORE PROPERTIES ##############
+#######################################################
+
+
+liquibase:
+  change-log: classpath:db/changelog/db.changelog-master.yaml
+  enabled: true
+  drop-first: false
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://database:5432/rcpc_database
+    username: rcpc_user
+    password: rcpc_pwd
+    hikari:
+      maximumPoolSize: 5
+      minimumIdle: 3
