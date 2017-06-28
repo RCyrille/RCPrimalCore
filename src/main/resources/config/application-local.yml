@@ -1,0 +1,15 @@
+#######################################################
+############## RC PRIMAL CORE PROPERTIES ##############
+##############       LOCAL PROFILE       ##############
+#######################################################
+# This profile is used to locally run the application
+# but use an other database than the default one
+# Run command :
+#   graldew bootrun -Pspring.profiles.active=local
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/rcpc_database
+    username: rcpc_user
+    password: rcpc_pwd

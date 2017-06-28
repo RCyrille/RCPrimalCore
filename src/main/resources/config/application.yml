@@ -11,8 +11,8 @@ liquibase:
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://database:5432/rcpc_database
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:rcpc_database;USER=rcpc_user;PASSWORD=rcpc_pwd;DB_CLOSE_DELAY=-1;
     username: rcpc_user
     password: rcpc_pwd
     hikari:

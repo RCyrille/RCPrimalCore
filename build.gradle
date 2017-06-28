@@ -23,8 +23,10 @@ ext {
 	projectName = 'RCPrimalCore'
 	projectVersion = '0.0.1-SNAPSHOT'
 	junitVersion = '4.+'
-	postgresqlVersion= '42.1.1'
-	hikariCPVersion= '2.6.3'
+	postgresqlVersion = '42.1.1'
+	h2Version = '1.4.196'
+	hikariCPVersion = '2.6.3'
+
 }
 
 
@@ -45,16 +47,25 @@ war {
 dependencies {
 	// springframework version is determined by the gradle plugin version
 	compile ("org.springframework.boot:spring-boot-starter-web")
-	compile ("org.springframework.boot:spring-boot-devtools")
+	runtime ("org.springframework.boot:spring-boot-devtools")
 	
 	//Database dependencies
 	compile ("org.springframework.boot:spring-boot-starter-data-jpa")
-	compile ("org.postgresql:postgresql:${postgresqlVersion}")
-	compile ("org.liquibase:liquibase-core")
-	compile ("com.zaxxer:HikariCP:${hikariCPVersion}")
+	runtime ("org.postgresql:postgresql:${postgresqlVersion}")
+	runtime ("org.liquibase:liquibase-core")
+	runtime ("com.zaxxer:HikariCP:${hikariCPVersion}")
+	runtime ("com.h2database:h2:${h2Version}")
 
 	// see: https://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html#howto-create-a-deployable-war-file
 	providedRuntime ("org.springframework.boot:spring-boot-starter-tomcat")
 
 	testCompile ("junit:junit:${junitVersion}")
+}
+
+
+// SpringBoot configurations (Especially for spring profile)
+bootRun {
+	if ( project.hasProperty('spring.profiles.active') ) {
+		systemProperties['spring.profiles.active'] = project.property('spring.profiles.active');
+	}
 }

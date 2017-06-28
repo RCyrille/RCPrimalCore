@@ -5,7 +5,7 @@ services:
     depends_on:
       - database
     image: openjdk:8-alpine
-    command: ./gradlew bootrun
+    command: ./gradlew bootrun -Pspring.profiles.active=docker
     working_dir: /rcpc_app
     volumes:
       - .:/rcpc_app

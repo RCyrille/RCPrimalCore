@@ -1,0 +1,14 @@
+#######################################################
+############## RC PRIMAL CORE PROPERTIES ##############
+##############       DOCKER PROFILE      ##############
+#######################################################
+# This profile is used by docker (see docker-compose)
+# Run command :
+#   graldew bootrun -Pspring.profiles.active=docker
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://database:5432/rcpc_database
+    username: rcpc_user
+    password: rcpc_pwd
