@@ -14,19 +14,19 @@ buildscript {
 
 
 // Used gradle plugins
+apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 apply plugin: 'eclipse'
 
-// Variables
+sourceCompatibility = javaCompatibility
+
+// Dependencies versions
 ext {
-	projectName = 'RCPrimalCore'
-	projectVersion = '0.0.1-SNAPSHOT'
 	junitVersion = '4.+'
 	postgresqlVersion = '42.1.1'
 	h2Version = '1.4.196'
 	hikariCPVersion = '2.6.3'
-
 }
 
 
@@ -38,8 +38,8 @@ repositories {
 
 // .War building configuration
 war {
-	baseName = "${projectName}"
-	version = "${projectVersion}"
+	baseName = projectName
+	version = projectVersion
 }
 
 
